@@ -57,7 +57,7 @@ public class panelPasajero extends javax.swing.JPanel {
         labelPasajeros9 = new javax.swing.JLabel();
         comboLugarEmision = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        labelAsiento = new javax.swing.JLabel();
         labelPasajeros10 = new javax.swing.JLabel();
         textoRUC = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -235,12 +235,13 @@ public class panelPasajero extends javax.swing.JPanel {
         jLabel10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, 140, 50));
 
-        jLabel11.setBackground(new java.awt.Color(0, 0, 153));
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel11.setOpaque(true);
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 90, 180));
+        labelAsiento.setBackground(new java.awt.Color(0, 0, 153));
+        labelAsiento.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        labelAsiento.setForeground(new java.awt.Color(255, 255, 255));
+        labelAsiento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelAsiento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        labelAsiento.setOpaque(true);
+        add(labelAsiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 90, 180));
 
         labelPasajeros10.setBackground(new java.awt.Color(56, 100, 144));
         labelPasajeros10.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
@@ -328,7 +329,6 @@ public class panelPasajero extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -341,6 +341,7 @@ public class panelPasajero extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    public javax.swing.JLabel labelAsiento;
     private javax.swing.JLabel labelPasajeros;
     private javax.swing.JLabel labelPasajeros1;
     private javax.swing.JLabel labelPasajeros10;

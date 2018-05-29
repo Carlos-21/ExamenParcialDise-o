@@ -5,6 +5,7 @@
  */
 package frame.propiedad;
 
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -20,6 +21,8 @@ public class Directorio {
     public static String fondoLogin = "src/Frame/imagenes/seguridad/fondoLogin.jpg";
     public static String botonAtras = "src/Frame/imagenes/iconos/retroceso.png";
     public static String botonSalir = "src/Frame/imagenes/iconos/salir.png";
+    public static Color asientoReservado = new Color(204,0,0);
+    public static Color asientoDisponible = new Color(13,13,77);
     
     public static void ponerImagenLabel(JLabel label, String ruta){
         ImageIcon icon = new ImageIcon(ruta);

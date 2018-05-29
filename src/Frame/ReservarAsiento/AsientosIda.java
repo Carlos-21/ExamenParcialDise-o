@@ -5,17 +5,33 @@
  */
 package Frame.ReservarAsiento;
 
+import dominio.Asiento;
+import frame.propiedad.Directorio;
+
+
 /**
  *
  * @author CARLOS
  */
 public class AsientosIda extends javax.swing.JFrame {
-
-    /**
-     * Creates new form ReservarAsientoBus
-     */
+    private Asiento asientos[];
+    private int cantidadAsientosReservados;
+    private boolean[] banderas;
+    
     public AsientosIda() {
         initComponents();
+        
+        asientos = new Asiento[23];
+        for (int i = 0; i < 23; i++) {
+            asientos[i] = new Asiento((i+1),"Disponible");
+        }
+        
+        banderas = new boolean[23];
+        for (int i = 0; i < 23; i++) {
+            banderas[i] = true;
+        }
+        
+        cantidadAsientosReservados = 0;
     }
 
     /**
@@ -99,7 +115,7 @@ public class AsientosIda extends javax.swing.JFrame {
         botonContinuar.setForeground(new java.awt.Color(255, 255, 255));
         botonContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame/imagenes/iconos/bus.png"))); // NOI18N
         botonContinuar.setText("Continuar");
-        getContentPane().add(botonContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 590, -1, 40));
+        getContentPane().add(botonContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 550, -1, 40));
 
         label5.setBackground(new java.awt.Color(153, 153, 153));
         label5.setOpaque(true);
@@ -148,84 +164,154 @@ public class AsientosIda extends javax.swing.JFrame {
         botonA21.setForeground(new java.awt.Color(255, 255, 255));
         botonA21.setText("21");
         botonA21.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonA21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA21ActionPerformed(evt);
+            }
+        });
         panelSegundoPiso.add(botonA21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 46, 30));
 
         botonA10.setBackground(new java.awt.Color(13, 13, 77));
         botonA10.setForeground(new java.awt.Color(255, 255, 255));
         botonA10.setText("10");
         botonA10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonA10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA10ActionPerformed(evt);
+            }
+        });
         panelSegundoPiso.add(botonA10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 46, 30));
 
         botonA11.setBackground(new java.awt.Color(13, 13, 77));
         botonA11.setForeground(new java.awt.Color(255, 255, 255));
         botonA11.setText("11");
         botonA11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonA11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA11ActionPerformed(evt);
+            }
+        });
         panelSegundoPiso.add(botonA11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 46, 30));
 
         botonA12.setBackground(new java.awt.Color(13, 13, 77));
         botonA12.setForeground(new java.awt.Color(255, 255, 255));
         botonA12.setText("12");
         botonA12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonA12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA12ActionPerformed(evt);
+            }
+        });
         panelSegundoPiso.add(botonA12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 46, 30));
 
         botonA14.setBackground(new java.awt.Color(13, 13, 77));
         botonA14.setForeground(new java.awt.Color(255, 255, 255));
         botonA14.setText("14");
         botonA14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonA14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA14ActionPerformed(evt);
+            }
+        });
         panelSegundoPiso.add(botonA14, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 46, 30));
 
         botonA13.setBackground(new java.awt.Color(13, 13, 77));
         botonA13.setForeground(new java.awt.Color(255, 255, 255));
         botonA13.setText("13");
         botonA13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonA13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA13ActionPerformed(evt);
+            }
+        });
         panelSegundoPiso.add(botonA13, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 46, 30));
 
         botonA16.setBackground(new java.awt.Color(13, 13, 77));
         botonA16.setForeground(new java.awt.Color(255, 255, 255));
         botonA16.setText("16");
         botonA16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonA16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA16ActionPerformed(evt);
+            }
+        });
         panelSegundoPiso.add(botonA16, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 46, 30));
 
         botonA17.setBackground(new java.awt.Color(13, 13, 77));
         botonA17.setForeground(new java.awt.Color(255, 255, 255));
         botonA17.setText("17");
         botonA17.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonA17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA17ActionPerformed(evt);
+            }
+        });
         panelSegundoPiso.add(botonA17, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 46, 30));
 
         botonA19.setBackground(new java.awt.Color(13, 13, 77));
         botonA19.setForeground(new java.awt.Color(255, 255, 255));
         botonA19.setText("19");
         botonA19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonA19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA19ActionPerformed(evt);
+            }
+        });
         panelSegundoPiso.add(botonA19, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 46, 30));
 
         botonA20.setBackground(new java.awt.Color(13, 13, 77));
         botonA20.setForeground(new java.awt.Color(255, 255, 255));
         botonA20.setText("20");
         botonA20.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonA20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA20ActionPerformed(evt);
+            }
+        });
         panelSegundoPiso.add(botonA20, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 46, 30));
 
         botonA23.setBackground(new java.awt.Color(13, 13, 77));
         botonA23.setForeground(new java.awt.Color(255, 255, 255));
         botonA23.setText("23");
         botonA23.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonA23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA23ActionPerformed(evt);
+            }
+        });
         panelSegundoPiso.add(botonA23, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 46, 30));
 
         botonA22.setBackground(new java.awt.Color(13, 13, 77));
         botonA22.setForeground(new java.awt.Color(255, 255, 255));
         botonA22.setText("22");
         botonA22.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonA22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA22ActionPerformed(evt);
+            }
+        });
         panelSegundoPiso.add(botonA22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 46, 30));
 
         botonA15.setBackground(new java.awt.Color(13, 13, 77));
         botonA15.setForeground(new java.awt.Color(255, 255, 255));
         botonA15.setText("15");
         botonA15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonA15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA15ActionPerformed(evt);
+            }
+        });
         panelSegundoPiso.add(botonA15, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 46, 30));
 
         botonA18.setBackground(new java.awt.Color(13, 13, 77));
         botonA18.setForeground(new java.awt.Color(255, 255, 255));
         botonA18.setText("18");
         botonA18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonA18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA18ActionPerformed(evt);
+            }
+        });
         panelSegundoPiso.add(botonA18, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 46, 30));
 
         getContentPane().add(panelSegundoPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 380, 200));
@@ -240,54 +326,99 @@ public class AsientosIda extends javax.swing.JFrame {
         botonA1.setForeground(new java.awt.Color(255, 255, 255));
         botonA1.setText("1");
         botonA1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonA1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA1ActionPerformed(evt);
+            }
+        });
         panelPrimerPiso.add(botonA1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 46, 30));
 
         botonA8.setBackground(new java.awt.Color(13, 13, 77));
         botonA8.setForeground(new java.awt.Color(255, 255, 255));
         botonA8.setText("8");
         botonA8.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        botonA8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA8ActionPerformed(evt);
+            }
+        });
         panelPrimerPiso.add(botonA8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 46, 30));
 
         botonA4.setBackground(new java.awt.Color(13, 13, 77));
         botonA4.setForeground(new java.awt.Color(255, 255, 255));
         botonA4.setText("4");
         botonA4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        botonA4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA4ActionPerformed(evt);
+            }
+        });
         panelPrimerPiso.add(botonA4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 46, 30));
 
         botonA7.setBackground(new java.awt.Color(13, 13, 77));
         botonA7.setForeground(new java.awt.Color(255, 255, 255));
         botonA7.setText("7");
         botonA7.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        botonA7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA7ActionPerformed(evt);
+            }
+        });
         panelPrimerPiso.add(botonA7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 46, 30));
 
         botonA9.setBackground(new java.awt.Color(13, 13, 77));
         botonA9.setForeground(new java.awt.Color(255, 255, 255));
         botonA9.setText("9");
         botonA9.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        botonA9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA9ActionPerformed(evt);
+            }
+        });
         panelPrimerPiso.add(botonA9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 46, 30));
 
         botonA6.setBackground(new java.awt.Color(13, 13, 77));
         botonA6.setForeground(new java.awt.Color(255, 255, 255));
         botonA6.setText("6");
         botonA6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        botonA6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA6ActionPerformed(evt);
+            }
+        });
         panelPrimerPiso.add(botonA6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 46, 30));
 
         botonA3.setBackground(new java.awt.Color(13, 13, 77));
         botonA3.setForeground(new java.awt.Color(255, 255, 255));
         botonA3.setText("3");
         botonA3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        botonA3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA3ActionPerformed(evt);
+            }
+        });
         panelPrimerPiso.add(botonA3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 46, 30));
 
         botonA2.setBackground(new java.awt.Color(13, 13, 77));
         botonA2.setForeground(new java.awt.Color(255, 255, 255));
         botonA2.setText("2");
         botonA2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        botonA2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA2ActionPerformed(evt);
+            }
+        });
         panelPrimerPiso.add(botonA2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 46, 30));
 
         botonA5.setBackground(new java.awt.Color(13, 13, 77));
         botonA5.setForeground(new java.awt.Color(255, 255, 255));
         botonA5.setText("5");
         botonA5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        botonA5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonA5ActionPerformed(evt);
+            }
+        });
         panelPrimerPiso.add(botonA5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 46, 30));
 
         getContentPane().add(panelPrimerPiso, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 270, 220, 200));
@@ -352,10 +483,401 @@ public class AsientosIda extends javax.swing.JFrame {
         botonAnterior.setForeground(new java.awt.Color(255, 255, 255));
         botonAnterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame/imagenes/iconos/bus2.png"))); // NOI18N
         botonAnterior.setText("Regresar");
-        getContentPane().add(botonAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 590, -1, 40));
+        getContentPane().add(botonAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 550, -1, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA1ActionPerformed
+        if(banderas[0]){
+            botonA1.setBackground(Directorio.asientoReservado);
+            asientos[0].setEstado("Reservado");
+            banderas[0] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA1.setBackground(Directorio.asientoDisponible);
+            asientos[0].setEstado("Disponible");
+            banderas[0] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA1ActionPerformed
+
+    private void botonA2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA2ActionPerformed
+        if(banderas[1]){
+            botonA2.setBackground(Directorio.asientoReservado);
+            asientos[1].setEstado("Reservado");
+            banderas[1] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA2.setBackground(Directorio.asientoDisponible);
+            asientos[1].setEstado("Disponible");
+            banderas[1] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA2ActionPerformed
+
+    private void botonA3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA3ActionPerformed
+        if(banderas[2]){
+            botonA3.setBackground(Directorio.asientoReservado);
+            asientos[2].setEstado("Reservado");
+            banderas[2] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA3.setBackground(Directorio.asientoDisponible);
+            asientos[2].setEstado("Disponible");
+            banderas[2] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA3ActionPerformed
+
+    private void botonA4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA4ActionPerformed
+        if(banderas[3]){
+            botonA4.setBackground(Directorio.asientoReservado);
+            asientos[3].setEstado("Reservado");
+            banderas[3] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA4.setBackground(Directorio.asientoDisponible);
+            asientos[3].setEstado("Disponible");
+            banderas[3] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA4ActionPerformed
+
+    private void botonA5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA5ActionPerformed
+        if(banderas[4]){
+            botonA5.setBackground(Directorio.asientoReservado);
+            asientos[4].setEstado("Reservado");
+            banderas[4] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA5.setBackground(Directorio.asientoDisponible);
+            asientos[4].setEstado("Disponible");
+            banderas[4] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA5ActionPerformed
+
+    private void botonA6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA6ActionPerformed
+        if(banderas[5]){
+            botonA6.setBackground(Directorio.asientoReservado);
+            asientos[5].setEstado("Reservado");
+            banderas[5] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA6.setBackground(Directorio.asientoDisponible);
+            asientos[5].setEstado("Disponible");
+            banderas[5] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA6ActionPerformed
+
+    private void botonA7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA7ActionPerformed
+        if(banderas[6]){
+            botonA7.setBackground(Directorio.asientoReservado);
+            asientos[6].setEstado("Reservado");
+            banderas[6] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA7.setBackground(Directorio.asientoDisponible);
+            asientos[6].setEstado("Disponible");
+            banderas[6] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA7ActionPerformed
+
+    private void botonA8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA8ActionPerformed
+        if(banderas[7]){
+            botonA8.setBackground(Directorio.asientoReservado);
+            asientos[7].setEstado("Reservado");
+            banderas[7] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA8.setBackground(Directorio.asientoDisponible);
+            asientos[7].setEstado("Disponible");
+            banderas[7] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA8ActionPerformed
+
+    private void botonA9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA9ActionPerformed
+        if(banderas[8]){
+            botonA9.setBackground(Directorio.asientoReservado);
+            asientos[8].setEstado("Reservado");
+            banderas[8] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA9.setBackground(Directorio.asientoDisponible);
+            asientos[8].setEstado("Disponible");
+            banderas[8] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA9ActionPerformed
+
+    private void botonA10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA10ActionPerformed
+        if(banderas[9]){
+            botonA10.setBackground(Directorio.asientoReservado);
+            asientos[9].setEstado("Reservado");
+            banderas[9] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA10.setBackground(Directorio.asientoDisponible);
+            asientos[9].setEstado("Disponible");
+            banderas[9] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA10ActionPerformed
+
+    private void botonA11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA11ActionPerformed
+        if(banderas[10]){
+            botonA11.setBackground(Directorio.asientoReservado);
+            asientos[10].setEstado("Reservado");
+            banderas[10] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA11.setBackground(Directorio.asientoDisponible);
+            asientos[10].setEstado("Disponible");
+            banderas[10] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA11ActionPerformed
+
+    private void botonA12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA12ActionPerformed
+        if(banderas[11]){
+            botonA12.setBackground(Directorio.asientoReservado);
+            asientos[11].setEstado("Reservado");
+            banderas[11] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA12.setBackground(Directorio.asientoDisponible);
+            asientos[11].setEstado("Disponible");
+            banderas[11] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA12ActionPerformed
+
+    private void botonA13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA13ActionPerformed
+        if(banderas[12]){
+            botonA13.setBackground(Directorio.asientoReservado);
+            asientos[12].setEstado("Reservado");
+            banderas[12] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA13.setBackground(Directorio.asientoDisponible);
+            asientos[12].setEstado("Disponible");
+            banderas[12] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA13ActionPerformed
+
+    private void botonA14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA14ActionPerformed
+        if(banderas[13]){
+            botonA14.setBackground(Directorio.asientoReservado);
+            asientos[13].setEstado("Reservado");
+            banderas[13] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA14.setBackground(Directorio.asientoDisponible);
+            asientos[13].setEstado("Disponible");
+            banderas[13] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA14ActionPerformed
+
+    private void botonA15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA15ActionPerformed
+        if(banderas[14]){
+            botonA15.setBackground(Directorio.asientoReservado);
+            asientos[14].setEstado("Reservado");
+            banderas[14] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA15.setBackground(Directorio.asientoDisponible);
+            asientos[14].setEstado("Disponible");
+            banderas[14] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA15ActionPerformed
+
+    private void botonA16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA16ActionPerformed
+        if(banderas[15]){
+            botonA16.setBackground(Directorio.asientoReservado);
+            asientos[15].setEstado("Reservado");
+            banderas[15] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA16.setBackground(Directorio.asientoDisponible);
+            asientos[15].setEstado("Disponible");
+            banderas[15] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA16ActionPerformed
+
+    private void botonA17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA17ActionPerformed
+        if(banderas[16]){
+            botonA17.setBackground(Directorio.asientoReservado);
+            asientos[16].setEstado("Reservado");
+            banderas[16] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA17.setBackground(Directorio.asientoDisponible);
+            asientos[16].setEstado("Disponible");
+            banderas[16] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA17ActionPerformed
+
+    private void botonA18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA18ActionPerformed
+        if(banderas[17]){
+            botonA18.setBackground(Directorio.asientoReservado);
+            asientos[17].setEstado("Reservado");
+            banderas[17] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA18.setBackground(Directorio.asientoDisponible);
+            asientos[17].setEstado("Disponible");
+            banderas[17] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA18ActionPerformed
+
+    private void botonA19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA19ActionPerformed
+        if(banderas[18]){
+            botonA19.setBackground(Directorio.asientoReservado);
+            asientos[18].setEstado("Reservado");
+            banderas[18] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA19.setBackground(Directorio.asientoDisponible);
+            asientos[18].setEstado("Disponible");
+            banderas[18] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA19ActionPerformed
+
+    private void botonA20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA20ActionPerformed
+        if(banderas[19]){
+            botonA20.setBackground(Directorio.asientoReservado);
+            asientos[19].setEstado("Reservado");
+            banderas[19] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA20.setBackground(Directorio.asientoDisponible);
+            asientos[19].setEstado("Disponible");
+            banderas[19] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA20ActionPerformed
+
+    private void botonA21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA21ActionPerformed
+        if(banderas[20]){
+            botonA21.setBackground(Directorio.asientoReservado);
+            asientos[20].setEstado("Reservado");
+            banderas[20] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA21.setBackground(Directorio.asientoDisponible);
+            asientos[20].setEstado("Disponible");
+            banderas[20] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA21ActionPerformed
+
+    private void botonA22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA22ActionPerformed
+        if(banderas[21]){
+            botonA22.setBackground(Directorio.asientoReservado);
+            asientos[21].setEstado("Reservado");
+            banderas[21] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA22.setBackground(Directorio.asientoDisponible);
+            asientos[21].setEstado("Disponible");
+            banderas[21] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA22ActionPerformed
+
+    private void botonA23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonA23ActionPerformed
+        if(banderas[22]){
+            botonA23.setBackground(Directorio.asientoReservado);
+            asientos[22].setEstado("Reservado");
+            banderas[22] = false;
+            
+            cantidadAsientosReservados++;
+        }
+        else{
+            botonA23.setBackground(Directorio.asientoDisponible);
+            asientos[22].setEstado("Disponible");
+            banderas[22] = true;
+            
+            cantidadAsientosReservados--;
+        }
+    }//GEN-LAST:event_botonA23ActionPerformed
 
     /**
      * @param args the command line arguments

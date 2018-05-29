@@ -20,6 +20,7 @@ public class PasajerosIdaRetorno extends javax.swing.JFrame {
         initComponents();
         panelAsientoIda.setLayout(null);
         panelPasajero p = new panelPasajero();
+        p.labelAsiento.setText("<html><p align=center>Asiento</p><p align=center>21</p></html>");
         p.setBounds(6, 5, 857, 417);
         panelAsientoIda.setSize(870, 1400);
          panelAsientoIda.add(p); 

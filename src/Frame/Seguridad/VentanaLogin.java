@@ -5,7 +5,9 @@
  */
 package Frame.Seguridad;
 
+import Frame.ReservarAsiento.Rutas;
 import frame.propiedad.Directorio;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -51,6 +53,11 @@ public class VentanaLogin extends javax.swing.JFrame {
 
         botonSalir.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         botonSalir.setForeground(new java.awt.Color(255, 255, 255));
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 60, 60));
         botonSalir.setOpaque(false);
         botonSalir.setContentAreaFilled(false);
@@ -60,6 +67,11 @@ public class VentanaLogin extends javax.swing.JFrame {
         btnLogin.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Ingresar");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -79,6 +91,24 @@ public class VentanaLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        String usuario = textUsuario.getText();
+        String contraseña = textContraseña.getText();
+        
+        if(!usuario.isEmpty() && !contraseña.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Acceso concedido.");
+            this.dispose();
+            Rutas ruta = new Rutas();
+            ruta.setVisible(true);
+            ruta.setLocationRelativeTo(null);
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        JOptionPane.showMessageDialog(null, "Gracias por usar nuestro sistema.");
+        this.dispose();
+    }//GEN-LAST:event_botonSalirActionPerformed
 
     private void ponerImagenes(){
         Directorio.ponerImagenLabel(labelLogin, Directorio.login);

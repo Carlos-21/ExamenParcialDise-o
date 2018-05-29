@@ -16,6 +16,8 @@ public class Rutas extends javax.swing.JFrame {
      */
     public Rutas() {
         initComponents();
+        panelResultadosBusqueda.setVisible(false);
+        botonContinuar.setVisible(false);
     }
 
     /**
@@ -87,9 +89,17 @@ public class Rutas extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title3", "Asientos"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tablaIda);
 
         panelResultadosBusqueda.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 780, 50));
@@ -114,19 +124,30 @@ public class Rutas extends javax.swing.JFrame {
         panelDatosViaje.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Ingrese datos de viaje", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 0, 14))); // NOI18N
         panelDatosViaje.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        radioIdaRetorno.setSelected(true);
         radioIdaRetorno.setText("Ida y retorno");
+        radioIdaRetorno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioIdaRetornoActionPerformed(evt);
+            }
+        });
         panelDatosViaje.add(radioIdaRetorno, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, -1, -1));
 
         radioIda.setText("Solo ida");
+        radioIda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioIdaActionPerformed(evt);
+            }
+        });
         panelDatosViaje.add(radioIda, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, -1));
 
         labelInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame/imagenes/iconos/iniciar.png"))); // NOI18N
         labelInicio.setText("Origen");
-        panelDatosViaje.add(labelInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 70, -1));
+        panelDatosViaje.add(labelInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 90, -1));
 
         labelFin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame/imagenes/iconos/terminar.png"))); // NOI18N
         labelFin.setText("Fin");
-        panelDatosViaje.add(labelFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 70, -1));
+        panelDatosViaje.add(labelFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 90, -1));
 
         labelFechaIda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame/imagenes/iconos/autobus.png"))); // NOI18N
         labelFechaIda.setText("Fecha ida");
@@ -141,6 +162,11 @@ public class Rutas extends javax.swing.JFrame {
         botonBuscar.setForeground(new java.awt.Color(255, 255, 255));
         botonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame/imagenes/iconos/icono-de-lupa.png"))); // NOI18N
         botonBuscar.setText("Buscar");
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarActionPerformed(evt);
+            }
+        });
         panelDatosViaje.add(botonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, -1, 40));
 
         comboOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lima (Arriola)", "Chiclayo", "Piura", "Trujillo", "Chimbote" }));
@@ -195,6 +221,23 @@ public class Rutas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void radioIdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioIdaActionPerformed
+        labelFechaRetorno.setEnabled(false);
+        fechaRetorno.setEnabled(false);
+        radioIdaRetorno.setSelected(false);
+    }//GEN-LAST:event_radioIdaActionPerformed
+
+    private void radioIdaRetornoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioIdaRetornoActionPerformed
+        labelFechaRetorno.setEnabled(true);
+        fechaRetorno.setEnabled(true);
+        radioIda.setSelected(false);
+    }//GEN-LAST:event_radioIdaRetornoActionPerformed
+
+    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+        panelResultadosBusqueda.setVisible(true);
+        botonContinuar.setVisible(true);
+    }//GEN-LAST:event_botonBuscarActionPerformed
 
     /**
      * @param args the command line arguments
