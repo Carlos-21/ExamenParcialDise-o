@@ -10,6 +10,10 @@ import frame.propiedad.Directorio;
 import javax.swing.JOptionPane;
 
 
+
+
+
+
 /**
  *
  * @author CARLOS
