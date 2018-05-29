@@ -115,6 +115,11 @@ public class AsientosIda extends javax.swing.JFrame {
         botonContinuar.setForeground(new java.awt.Color(255, 255, 255));
         botonContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame/imagenes/iconos/bus.png"))); // NOI18N
         botonContinuar.setText("Continuar");
+        botonContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonContinuarActionPerformed(evt);
+            }
+        });
         getContentPane().add(botonContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 550, -1, 40));
 
         label5.setBackground(new java.awt.Color(153, 153, 153));
@@ -878,6 +883,13 @@ public class AsientosIda extends javax.swing.JFrame {
             cantidadAsientosReservados--;
         }
     }//GEN-LAST:event_botonA23ActionPerformed
+
+    private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
+        PasajerosIda pasajeros = new PasajerosIda(cantidadAsientosReservados);
+        pasajeros.setVisible(true);
+        pasajeros.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_botonContinuarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -11,10 +11,10 @@ import java.awt.Dimension;
  *
  * @author CARLOS
  */
-public class PasajerosIdaRetorno extends javax.swing.JFrame {
+public class PasajerosIda extends javax.swing.JFrame {
     private int cantidadAsientos;
-    
-    public PasajerosIdaRetorno() {
+    private panelPasajero pasajeros[];
+    public PasajerosIda() {
         initComponents();
         panelAsientoIda.setLayout(null);
         panelPasajero p = new panelPasajero();
@@ -30,11 +30,23 @@ public class PasajerosIdaRetorno extends javax.swing.JFrame {
         System.out.println("hoar" + panelAsientoIda.getSize());
         
     }
-
-    public void setCantidadAsientos(int cantidadAsientos) {
-        this.cantidadAsientos = cantidadAsientos;
+    
+    public PasajerosIda(int asientos){
+        initComponents();
+        cantidadAsientos = asientos;
+        pasajeros = new panelPasajero[cantidadAsientos];
+        int a = 857;
+        int b = 417;
+        int c = 5;
+        panelAsientoIda.setPreferredSize(new Dimension(857, 417 * cantidadAsientos));
+        for (int i = 0; i < cantidadAsientos; i++) {
+            pasajeros[i] = new panelPasajero();
+            pasajeros[i].setBounds(6, c, a, b);
+            c += b;
+            panelAsientoIda.add(pasajeros[i]);
+        }
+        panelAsientoIda.repaint();      
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,11 +62,6 @@ public class PasajerosIdaRetorno extends javax.swing.JFrame {
         labelConfirmacion = new javax.swing.JLabel();
         labelResultados = new javax.swing.JLabel();
         labelRetroalimentacion = new javax.swing.JLabel();
-        pestañasRegistroPasajeros = new javax.swing.JTabbedPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        panelAsientoIda = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        panelAsientoRetorno = new javax.swing.JPanel();
         botonContinuar = new javax.swing.JButton();
         panelDetalleItinerario = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -66,9 +73,12 @@ public class PasajerosIdaRetorno extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tableItinerarioRetorno = new javax.swing.JTable();
         botonRetroceder = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        panelAsientoIda = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(974, 690));
+        setMinimumSize(new java.awt.Dimension(974, 720));
+        setPreferredSize(new java.awt.Dimension(973, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelRutas.setBackground(new java.awt.Color(255, 255, 0));
@@ -121,46 +131,6 @@ public class PasajerosIdaRetorno extends javax.swing.JFrame {
         labelRetroalimentacion.setForeground(new java.awt.Color(0, 0, 153));
         labelRetroalimentacion.setOpaque(true);
         getContentPane().add(labelRetroalimentacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 973, 62));
-
-        pestañasRegistroPasajeros.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        panelAsientoIda.setMinimumSize(new java.awt.Dimension(857, 639));
-        panelAsientoIda.setPreferredSize(new java.awt.Dimension(857, 639));
-
-        javax.swing.GroupLayout panelAsientoIdaLayout = new javax.swing.GroupLayout(panelAsientoIda);
-        panelAsientoIda.setLayout(panelAsientoIdaLayout);
-        panelAsientoIdaLayout.setHorizontalGroup(
-            panelAsientoIdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 857, Short.MAX_VALUE)
-        );
-        panelAsientoIdaLayout.setVerticalGroup(
-            panelAsientoIdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 639, Short.MAX_VALUE)
-        );
-
-        jScrollPane1.setViewportView(panelAsientoIda);
-
-        pestañasRegistroPasajeros.addTab("1. Registro de pasajeros de ida", jScrollPane1);
-
-        panelAsientoRetorno.setMinimumSize(new java.awt.Dimension(857, 639));
-        panelAsientoRetorno.setPreferredSize(new java.awt.Dimension(857, 639));
-
-        javax.swing.GroupLayout panelAsientoRetornoLayout = new javax.swing.GroupLayout(panelAsientoRetorno);
-        panelAsientoRetorno.setLayout(panelAsientoRetornoLayout);
-        panelAsientoRetornoLayout.setHorizontalGroup(
-            panelAsientoRetornoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 857, Short.MAX_VALUE)
-        );
-        panelAsientoRetornoLayout.setVerticalGroup(
-            panelAsientoRetornoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 639, Short.MAX_VALUE)
-        );
-
-        jScrollPane5.setViewportView(panelAsientoRetorno);
-
-        pestañasRegistroPasajeros.addTab("2. Registro de pasajeros de retorno", jScrollPane5);
-
-        getContentPane().add(pestañasRegistroPasajeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 880, 220));
 
         botonContinuar.setBackground(new java.awt.Color(0, 0, 102));
         botonContinuar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -223,9 +193,24 @@ public class PasajerosIdaRetorno extends javax.swing.JFrame {
         botonRetroceder.setBackground(new java.awt.Color(0, 0, 102));
         botonRetroceder.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         botonRetroceder.setForeground(new java.awt.Color(255, 255, 255));
-        botonRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame/imagenes/iconos/bus5.png"))); // NOI18N
+        botonRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame/imagenes/iconos/bus2.png"))); // NOI18N
         botonRetroceder.setText("Retroceder");
         getContentPane().add(botonRetroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 620, -1, 40));
+
+        javax.swing.GroupLayout panelAsientoIdaLayout = new javax.swing.GroupLayout(panelAsientoIda);
+        panelAsientoIda.setLayout(panelAsientoIdaLayout);
+        panelAsientoIdaLayout.setHorizontalGroup(
+            panelAsientoIdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 877, Short.MAX_VALUE)
+        );
+        panelAsientoIdaLayout.setVerticalGroup(
+            panelAsientoIdaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 509, Short.MAX_VALUE)
+        );
+
+        jScrollPane4.setViewportView(panelAsientoIda);
+
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 880, 260));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -247,14 +232,46 @@ public class PasajerosIdaRetorno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PasajerosIdaRetorno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PasajerosIda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PasajerosIdaRetorno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PasajerosIda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PasajerosIdaRetorno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PasajerosIda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PasajerosIdaRetorno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PasajerosIda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -291,7 +308,7 @@ public class PasajerosIdaRetorno extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PasajerosIdaRetorno().setVisible(true);
+                new PasajerosIda().setVisible(true);
             }
         });
     }
@@ -301,10 +318,9 @@ public class PasajerosIdaRetorno extends javax.swing.JFrame {
     private javax.swing.JButton botonRetroceder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel labelAsientos;
     private javax.swing.JLabel labelConfirmacion;
     private javax.swing.JLabel labelIda;
@@ -314,9 +330,7 @@ public class PasajerosIdaRetorno extends javax.swing.JFrame {
     private javax.swing.JLabel labelRetroalimentacion;
     private javax.swing.JLabel labelRutas;
     private javax.swing.JPanel panelAsientoIda;
-    private javax.swing.JPanel panelAsientoRetorno;
     private javax.swing.JPanel panelDetalleItinerario;
-    private javax.swing.JTabbedPane pestañasRegistroPasajeros;
     private javax.swing.JTable tableItinerarioIda;
     private javax.swing.JTable tableItinerarioRetorno;
     // End of variables declaration//GEN-END:variables
